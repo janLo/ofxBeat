@@ -206,7 +206,7 @@ bool ofxBeat::isBeat(int subband)
 
 bool ofxBeat::isKick()
 {
-  return isBeat(0);
+  return std::max(isBeat(0), isBeat(1));
 }
 
 bool ofxBeat::isSnare()
