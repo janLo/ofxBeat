@@ -1,4 +1,3 @@
-
 #ifndef _FFT
 #define _FFT
 
@@ -8,19 +7,15 @@
 
 
 class fft {
-	
-	public:
-		
-	fft();
-	~fft();	
-	
-	/* Calculate the power spectrum */
-	void powerSpectrum(int start, int half, float *data, int windowSize,float *magnitude,float *phase, float *power, float *avg_power);
-	/* ... the inverse */
-	void inversePowerSpectrum(int start, int half, int windowSize, float *finalOut,float *magnitude,float *phase);	
-	
 
+    public:
+
+        fft();
+        ~fft();
+
+        /* Calculate the power spectrum */
+        void powerSpectrum(int start, int half, const float * const data, int windowSize,float *magnitude,float *phase, float *power, float *avg_power);
 };
 
 
-#endif	
+#endif
