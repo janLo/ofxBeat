@@ -11,6 +11,7 @@
 #include <cstring>
 #include <cfloat>
 #include <algorithm>
+#include <iostream>
 #endif
 
 #include "ofxBeat.h"
@@ -200,10 +201,14 @@ void ofxBeat::audioFill(const float* const input, int frame_count) {
 }
 
 void ofxBeat::audioProcess(int frame_count) {
-    // clear unused space
-    for (size_t i = frame_count; i < buffer_size; ++i) {
-        audio_input[i] = 0.0f;
+    // duplicate to unused space
+    size_t pos = frame_count;
+    while (0 != frame_count && pos < buffer_size) {
+        size_t len = std::min(buffer_size - pos, size_t(frame_count));
+        memcpy(&audio_input[pos], &audio_input[0], sizeof(float) * len);
+        pos += len;
     }
+
 
     float avg_power = 0.0f;
     myfft.powerSpectrum(0, (int)fft_size, audio_input, buffer_size, magnitude, phase, power, &avg_power);
