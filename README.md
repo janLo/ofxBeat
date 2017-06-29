@@ -4,6 +4,8 @@ A simple beat detection routine for openFrameworks that gives 32 fft bands
 plus separate output for kick, snare, and hihat. Created for inclusion in the
 Cyril language for live coded visuals.
 
+It is heavy reworked to be more performant than the original.
+
 ## Provenance
 
 This builds on the beat tracking code in [ofxBeatTracking](https://github.com/zenwerk/ofxBeatTracking), which itself was based on C++ code from Dominic Mazzoni, which was based on an free FFT implementation in Fortan. Further details
